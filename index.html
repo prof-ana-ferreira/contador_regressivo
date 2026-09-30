@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta
+      name="description"
+      content="Contador de dias de trabalho restantes."
+    />
+
+    <title>Contador de Dias</title>
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <main class="app">
+      <section class="dashboard">
+        <!-- =================================================
+                 CABEÇALHO
+            ================================================== -->
+
+        <header class="cabecalho">
+          <div class="cabecalho-texto">
+            <h1>Contador de Dias</h1>
+
+            <p>Dias letivos e escolares restantes</p>
+
+            <time id="dataAtual" class="data-atual"></time>
+          </div>
+
+          <button
+            type="button"
+            id="btnConfiguracao"
+            class="btn-configuracao"
+            aria-label="Abrir configurações"
+            title="Configurações"
+          >
+            <span aria-hidden="true"> ⚙ </span>
+          </button>
+        </header>
+
+        <!-- =================================================
+                 ÁREA PRINCIPAL
+            ================================================== -->
+
+        <section class="area-principal" aria-label="Informações da contagem">
+          <!-- =================================================
+                     DATAS
+                ================================================== -->
+
+          <section class="periodo" aria-label="Período da contagem">
+            <article class="card-data">
+              <span class="label"> Início </span>
+
+              <strong id="inicioExibicao"> --/--/---- </strong>
+            </article>
+
+            <article class="card-data">
+              <span class="label"> Data final </span>
+
+              <strong id="fimExibicao"> --/--/---- </strong>
+            </article>
+          </section>
+
+          <!-- =================================================
+                     CONTADOR
+                ================================================== -->
+
+          <section class="area-contador" aria-labelledby="tituloContador">
+            <div class="contador">
+              <span
+                id="diasRestantes"
+                class="contador-numero"
+                aria-live="polite"
+                aria-atomic="true"
+              >
+                0
+              </span>
+
+              <h2 id="tituloContador" class="contador-label">
+                dias de trabalho restantes
+              </h2>
+            </div>
+          </section>
+        </section>
+
+        <!-- =================================================
+                 RODAPÉ
+            ================================================== -->
+
+        <footer>Contagem baseada nos dias de trabalho configurados.</footer>
+
+        <!-- =================================================
+                 PAINEL DE CONFIGURAÇÕES
+            ================================================== -->
+
+        <section
+          id="painelConfiguracao"
+          class="painel oculto"
+          aria-labelledby="tituloConfiguracoes"
+        >
+          <div class="painel-conteudo">
+            <header class="painel-cabecalho">
+              <div>
+                <h2 id="tituloConfiguracoes">Configurações</h2>
+
+                <p>Personalize o período da contagem.</p>
+              </div>
+
+              <button
+                type="button"
+                id="btnFecharConfiguracao"
+                class="btn-fechar"
+                aria-label="Fechar configurações"
+                title="Fechar"
+              >
+                <span aria-hidden="true"> × </span>
+              </button>
+            </header>
+
+            <!-- =================================================
+                         DATA INICIAL
+                    ================================================== -->
+
+            <div class="grupo">
+              <label for="dataInicio"> Início da contagem </label>
+
+              <input type="date" id="dataInicio" readonly />
+
+              <small> Definido automaticamente pela data atual. </small>
+            </div>
+
+            <!-- =================================================
+                         DATA FINAL
+                    ================================================== -->
+
+            <div class="grupo">
+              <label for="dataFim"> Data final </label>
+
+              <input type="date" id="dataFim" />
+            </div>
+
+            <!-- =================================================
+                         FERIADOS
+                    ================================================== -->
+
+            <div class="grupo">
+              <div class="titulo-grupo">
+                <h3>Feriados</h3>
+
+                <button
+                  type="button"
+                  id="btnAdicionarFeriado"
+                  class="btn-secundario"
+                >
+                  + Adicionar
+                </button>
+              </div>
+
+              <div id="feriados" class="lista"></div>
+            </div>
+
+            <!-- =================================================
+                         RECESSOS
+                    ================================================== -->
+
+            <div class="grupo">
+              <div class="titulo-grupo">
+                <h3>Recessos</h3>
+
+                <button
+                  type="button"
+                  id="btnAdicionarRecesso"
+                  class="btn-secundario"
+                >
+                  + Adicionar
+                </button>
+              </div>
+
+              <div id="recessos" class="lista"></div>
+            </div>
+
+            <!-- =================================================
+                         SALVAR
+                    ================================================== -->
+
+            <button type="button" id="btnSalvar" class="btn-principal">
+              Salvar alterações
+            </button>
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
